@@ -1,0 +1,19 @@
+<h1>Listing papers</h1>
+
+<table>
+  <tr>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @papers.each do |paper| %>
+  <tr>
+    <td><%= link_to paper.title, paper %></td>
+    <td><%= paper.year %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Paper', new_paper_path %>

@@ -1,0 +1,12 @@
+<p id="notice"><%= notice %></p>
+
+<h1><%= @paper.title %></h1>
+<h2><%= @paper.authors.sort_by(&:position).map(&:name).join(', ') %></h2>
+<h3><%= Date::MONTHNAMES[@paper.month] if @paper.month %> <%= @paper.year %></h3>
+
+<blockquote>
+  <%= simple_format @paper.abstract.squeeze("\n").gsub("\n", "\n\n") %>
+</blockquote>
+
+<%= link_to 'Edit', edit_paper_path(@paper) %> |
+<%= link_to 'Papers', papers_path %>
