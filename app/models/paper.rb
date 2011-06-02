@@ -9,6 +9,6 @@ class Paper < ActiveRecord::Base
   has_many :authors, :through => :contributions, :order => 'contributions.position'
 
   validates_length_of :title, :minimum => 10
-  validates_length_of :abstract, :minimum => 50
+  validates_length_of :abstract, :minimum => 50, :allow_blank => true
   validates_format_of :year, :with => /\A(19|20)\d\d\z/, :if => 'year.present?'
 end
