@@ -1,4 +1,6 @@
 Paperhub::Application.routes.draw do
+  root :to => 'papers#index'
+
   resources :papers, :except => [:destroy]
 
   resources :authors
