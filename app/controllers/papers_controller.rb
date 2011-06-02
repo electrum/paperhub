@@ -13,16 +13,12 @@ class PapersController < ApplicationController
 
   def edit
     @paper = Paper.find(params[:id])
+    @author_list = @paper.authors.map(&:name).join(', ')
   end
 
   def create
-    p = params[:paper]
     @paper = Paper.new
-    @paper.title = p[:title]
-    @paper.abstract = fix_abstract(p[:abstract]) if p[:abstract]
-    @paper.year = p[:year]
-
-    if @paper.save
+    if save
       redirect_to(@paper, :notice => 'Paper created')
     else
       render :action => :new
@@ -31,15 +27,39 @@ class PapersController < ApplicationController
 
   def update
     @paper = Paper.find(params[:id])
-    if @paper.update_attributes(params[:paper])
+    if save
       redirect_to(@paper, :notice => 'Paper updated')
     else
       render :action => :edit
     end
   end
 
+  def save
+    @author_list = params[:author_list]
+
+    authors = authors_from_list(@author_list)
+    contributions = authors.each_with_index.map do |a, i|
+      @paper.contributions.build(:author => a, :position => i)
+    end
+
+    p = params[:paper]
+    @paper.title = p[:title]
+    @paper.abstract = fix_abstract(p[:abstract]) if p[:abstract]
+    @paper.year = p[:year]
+    @paper.contributions = contributions
+
+    @paper.save
+  end
+
 private
   def fix_abstract(s)
     s.gsub('- ', '')
+  end
+
+  def authors_from_list(s)
+    s.to_s.split(/[,\n]/).
+      map {|i| i.gsub(/\A\s*and /, '') }.
+      map(&:strip).map(&:presence).compact.
+      map {|a| Author.find_or_create_by_name(a) }
   end
 end
