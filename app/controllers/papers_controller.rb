@@ -53,7 +53,7 @@ class PapersController < ApplicationController
 
 private
   def fix_abstract(s)
-    s.gsub('- ', '')
+    s.gsub('- ', '').gsub(/[ \t]{2,}/, ' ')
   end
 
   def authors_from_list(s)
