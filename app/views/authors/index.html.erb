@@ -1,0 +1,19 @@
+<h1>Authors</h1>
+
+<table>
+  <tr>
+    <th>Author</th>
+    <th>Papers</th>
+  </tr>
+
+<% @authors.sort_by(&:name).each do |author| %>
+  <tr>
+    <td><%= link_to author.name, author %></td>
+    <td><%= number_with_delimiter(author.papers.size) %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Author', new_author_path %>

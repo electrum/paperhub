@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+
+<h1><%= @author.name %></h1>
+
+<h2>Papers</h2>
+
+<%= render :partial => 'papers/papers', :object => @author.papers %>
+
+<br />
+
+<%= link_to 'Edit', edit_author_path(@author) %> |
+<% if @author.papers.empty? %>
+  <%= link_to 'Delete', @author, :confirm => 'Are you sure?', :method => :delete %> |
+<% end %>
+<%= link_to 'Authors', authors_path %>

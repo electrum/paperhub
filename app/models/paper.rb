@@ -5,8 +5,8 @@ class Paper < ActiveRecord::Base
   has_many :incoming_citations, :class_name => 'Citation', :foreign_key => :cited_paper_id
   has_many :cited_papers, :class_name => 'Paper', :through => :outgoing_citations
   has_many :citing_papers, :class_name => 'Paper', :through => :incoming_citations
-  has_many :contributions
-  has_many :authors, :through => :contributions
+  has_many :contributions, :dependent => :destroy
+  has_many :authors, :through => :contributions, :order => 'contributions.position'
 
   validates_length_of :title, :minimum => 10
   validates_length_of :abstract, :minimum => 50
