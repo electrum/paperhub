@@ -1,6 +1,10 @@
 Paperhub::Application.routes.draw do
   root :to => 'papers#index'
 
+  resource :session, :only => [:new, :create, :destroy]
+
+  resources :users, :only => [:new, :create]
+
   resources :papers, :except => [:destroy]
 
   resources :authors

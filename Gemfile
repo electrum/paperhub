@@ -11,6 +11,8 @@ gem 'pg'
 
 gem 'foreigner'
 
+gem 'bcrypt-ruby'
+
 # Use unicorn as the web server
 # gem 'unicorn'
 

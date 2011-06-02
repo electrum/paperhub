@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110515052257) do
+ActiveRecord::Schema.define(:version => 20110602044407) do
 
   create_table "authors", :primary_key => "author_id", :force => true do |t|
     t.string   "name",       :limit => 100, :null => false
@@ -57,6 +57,14 @@ ActiveRecord::Schema.define(:version => 20110515052257) do
     t.string   "url",        :limit => 250
     t.string   "md5",        :limit => 32
     t.integer  "size"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "users", :primary_key => "user_id", :force => true do |t|
+    t.string   "username",        :limit => 20,  :null => false
+    t.string   "password_digest", :limit => 100, :null => false
+    t.string   "email",           :limit => 100, :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
