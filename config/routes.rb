@@ -5,9 +5,16 @@ Paperhub::Application.routes.draw do
 
   resources :users, :only => [:new, :create]
 
-  resources :papers, :except => [:destroy]
+  resources :papers, :except => [:destroy] do
+    member do
+      post :create_bookmark
+      post :destroy_bookmark
+    end
+  end
 
   resources :authors
+
+  resources :bookmarks, :only => [:index]
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

@@ -10,13 +10,22 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110602044407) do
+ActiveRecord::Schema.define(:version => 20110604001837) do
 
   create_table "authors", :primary_key => "author_id", :force => true do |t|
     t.string   "name",       :limit => 100, :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "bookmarks", :primary_key => "bookmark_id", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "paper_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "bookmarks", ["user_id", "paper_id"], :name => "bookmarks_pk", :unique => true
 
   create_table "citations", :primary_key => "citation_id", :force => true do |t|
     t.integer  "citing_paper_id", :null => false
@@ -68,6 +77,9 @@ ActiveRecord::Schema.define(:version => 20110602044407) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_foreign_key "bookmarks", "papers", :name => "bookmarks_paper_id_fk", :primary_key => "paper_id"
+  add_foreign_key "bookmarks", "users", :name => "bookmarks_user_id_fk", :primary_key => "user_id"
 
   add_foreign_key "citations", "papers", :name => "citations_cited_paper_id_fk", :column => "cited_paper_id", :primary_key => "paper_id"
   add_foreign_key "citations", "papers", :name => "citations_citing_paper_id_fk", :column => "citing_paper_id", :primary_key => "paper_id"

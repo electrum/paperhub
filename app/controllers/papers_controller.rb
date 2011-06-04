@@ -34,6 +34,18 @@ class PapersController < ApplicationController
     end
   end
 
+  def create_bookmark
+    @paper = Paper.find(params[:id])
+    @session_user.bookmarks.find_or_create_by_paper_id(@paper.id)
+    redirect_to(@paper, :notice => 'Paper bookmarked')
+  end
+
+  def destroy_bookmark
+    @paper = Paper.find(params[:id])
+    @session_user.bookmarks.where(:paper_id => @paper.id).destroy_all
+    redirect_to(@paper, :notice => 'Bookmark removed')
+  end
+
   def save
     @author_list = params[:author_list]
 

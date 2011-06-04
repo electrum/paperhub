@@ -8,5 +8,12 @@
   <%= simple_format @paper.abstract.squeeze("\n").gsub("\n", "\n\n") %>
 </blockquote>
 
+<% if @session_user %>
+  <% if @session_user.bookmarked_paper?(@paper) %>
+    <%= link_to 'Remove Bookmark', destroy_bookmark_paper_path(@paper), :method => :post %> |
+  <% else %>
+    <%= link_to 'Bookmark Paper', create_bookmark_paper_path(@paper), :method => :post %> |
+  <% end %>
+<% end %>
 <%= link_to 'Edit', edit_paper_path(@paper) %> |
 <%= link_to 'Papers', papers_path %>

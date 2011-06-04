@@ -3,6 +3,8 @@ require 'bcrypt'
 class User < ActiveRecord::Base
   self.primary_key = :user_id
 
+  has_many :bookmarks
+
   attr_reader :password
 
   validates_length_of :password, :in => 6..20, :if => :new_or_password_changed?
@@ -34,5 +36,9 @@ class User < ActiveRecord::Base
   def self.authenticate(username, unencrypted_password)
     user = find_by_username(username)
     user && user.authenticate(unencrypted_password)
+  end
+
+  def bookmarked_paper?(paper)
+    bookmarks.where(:paper_id => paper.id).exists?
   end
 end

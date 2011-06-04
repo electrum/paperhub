@@ -1,0 +1,4 @@
+electrum:
+  username: electrum
+  password_digest: $2a$10$CotIDQ22W4PunQhZGlZ4Aepgh8FetvR21klKcVu1G8EVWj/eQgCoi
+  email: david@acz.org
