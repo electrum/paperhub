@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110604001837) do
+ActiveRecord::Schema.define(:version => 20110617221812) do
 
   create_table "authors", :primary_key => "author_id", :force => true do |t|
     t.string   "name",       :limit => 100, :null => false
@@ -25,7 +25,7 @@ ActiveRecord::Schema.define(:version => 20110604001837) do
     t.datetime "updated_at"
   end
 
-  add_index "bookmarks", ["user_id", "paper_id"], :name => "bookmarks_pk", :unique => true
+  add_index "bookmarks", ["user_id", "paper_id"], :name => "bookmarks_pk_uniq", :unique => true
 
   create_table "citations", :primary_key => "citation_id", :force => true do |t|
     t.integer  "citing_paper_id", :null => false
@@ -35,7 +35,7 @@ ActiveRecord::Schema.define(:version => 20110604001837) do
     t.datetime "updated_at"
   end
 
-  add_index "citations", ["cited_paper_id", "cited_paper_id"], :name => "citations_pk", :unique => true
+  add_index "citations", ["cited_paper_id", "cited_paper_id"], :name => "citations_pk_uniq", :unique => true
 
   create_table "contributions", :primary_key => "contribution_id", :force => true do |t|
     t.integer  "paper_id",                    :null => false
@@ -47,7 +47,7 @@ ActiveRecord::Schema.define(:version => 20110604001837) do
     t.datetime "updated_at"
   end
 
-  add_index "contributions", ["paper_id", "author_id"], :name => "contributions_pk", :unique => true
+  add_index "contributions", ["paper_id", "author_id"], :name => "contributions_pk_uniq", :unique => true
   add_index "contributions", ["paper_id", "position"], :name => "contributions_position_uniq", :unique => true
 
   create_table "papers", :primary_key => "paper_id", :force => true do |t|
