@@ -55,7 +55,7 @@ class PapersController < ApplicationController
     end
 
     p = params[:paper]
-    @paper.title = p[:title]
+    @paper.title = p[:title].try(:strip)
     @paper.abstract = fix_abstract(p[:abstract]) if p[:abstract]
     @paper.year = p[:year]
     @paper.contributions = contributions
@@ -65,7 +65,7 @@ class PapersController < ApplicationController
 
 private
   def fix_abstract(s)
-    s.gsub('- ', '').gsub(/[ \t]{2,}/, ' ')
+    s.gsub('- ', '').gsub(/[ \t]{2,}/, ' ').strip
   end
 
   def authors_from_list(s)
