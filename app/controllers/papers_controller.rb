@@ -69,8 +69,7 @@ private
   end
 
   def authors_from_list(s)
-    s.to_s.split(/[,\n]/).
-      map {|i| i.gsub(/\A\s*and /, '') }.
+    s.to_s.split(/[ ,]and |[,\n]/).
       map(&:strip).map(&:presence).compact.
       map {|a| Author.find_or_create_by_name(a) }
   end
