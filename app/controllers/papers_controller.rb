@@ -69,7 +69,9 @@ private
   end
 
   def authors_from_list(s)
-    s.to_s.split(/[ ,]and |[,\n]/).
+    s.to_s.
+      delete("\u2217\u002b\u2020\u2021").
+      split(/[ ,]and |[,\n]/).
       map(&:strip).map(&:presence).compact.
       map {|a| Author.find_or_create_by_name(a) }
   end
