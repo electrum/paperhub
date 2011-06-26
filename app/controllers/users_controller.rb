@@ -14,4 +14,8 @@ class UsersController < ApplicationController
       render :new
     end
   end
+
+  def show
+    @bookmarks = @session_user.bookmarks
+  end
 end

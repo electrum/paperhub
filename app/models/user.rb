@@ -41,4 +41,8 @@ class User < ActiveRecord::Base
   def bookmarked_paper?(paper)
     bookmarks.where(:paper_id => paper.id).exists?
   end
+
+  def to_param
+    username
+  end
 end
