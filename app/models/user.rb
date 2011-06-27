@@ -13,6 +13,7 @@ class User < ActiveRecord::Base
   validates_presence_of :password_confirmation, :if => :new_or_password_changed?
 
   validates_length_of :username, :in => 3..20
+  validates_format_of :username, :with => /\A[a-z][a-z0-9]+\z/
   validates_uniqueness_of :username
 
   validates_length_of :email, :maximum => 100

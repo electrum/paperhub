@@ -5,6 +5,7 @@ class UsersController < ApplicationController
 
   def create
     p = params[:user].slice(:username, :email, :password, :password_confirmation)
+    p[:username] = p[:username].downcase
     @user = User.new(p)
     if @user.save
       reset_session
