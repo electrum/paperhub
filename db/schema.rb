@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110619022744) do
+ActiveRecord::Schema.define(:version => 20110705220245) do
 
   create_table "authors", :primary_key => "author_id", :force => true do |t|
     t.string   "name",       :limit => 100, :null => false
@@ -62,7 +62,7 @@ ActiveRecord::Schema.define(:version => 20110619022744) do
 
   create_table "sources", :primary_key => "source_id", :force => true do |t|
     t.integer  "paper_id",                  :null => false
-    t.string   "type",       :limit => 10
+    t.string   "filetype",   :limit => 10
     t.string   "url",        :limit => 250
     t.string   "md5",        :limit => 32
     t.integer  "size"
