@@ -13,6 +13,8 @@ gem 'foreigner'
 
 gem 'bcrypt-ruby'
 
+gem 's3'
+
 # Use unicorn as the web server
 # gem 'unicorn'
 

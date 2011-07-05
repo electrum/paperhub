@@ -60,6 +60,20 @@ class PapersController < ApplicationController
     @paper.year = p[:year]
     @paper.contributions = contributions
 
+    if p[:file].present?
+      file = p[:file]
+      unless file.original_filename.downcase.ends_with? '.pdf'
+        @paper.errors.add(:base, 'filename does not end in .pdf')
+        return false
+      end
+      data = file.read
+      unless data.starts_with? '%PDF-'
+        @paper.errors.add(:base, 'file does not appear to be a PDF')
+        return false
+      end
+      @paper.sources << @paper.sources.build_from_data('pdf', data)
+    end
+
     @paper.save
   end
 

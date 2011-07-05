@@ -8,6 +8,16 @@
   <%= simple_format @paper.abstract.squeeze("\n").gsub("\n", "\n\n") %>
 </blockquote>
 
+<% if @paper.sources.present? %>
+  <p>
+    Download:
+    <% @paper.sources.each_with_index do |source, i| %>
+      <% if i > 0 %>|<% end %>
+      <%= link_to source.filetype.upcase, source.s3_url %>
+    <% end %>
+  </p>
+<% end %>
+
 <% if @session_user %>
   <% if @session_user.bookmarked_paper?(@paper) %>
     <%= link_to 'Remove Bookmark', destroy_bookmark_paper_path(@paper), :method => :post %> |

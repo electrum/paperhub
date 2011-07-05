@@ -7,6 +7,7 @@ class Paper < ActiveRecord::Base
   has_many :citing_papers, :class_name => 'Paper', :through => :incoming_citations
   has_many :contributions, :dependent => :destroy
   has_many :authors, :through => :contributions, :order => 'contributions.position'
+  has_many :sources
   has_many :bookmarks
 
   validates_length_of :title, :minimum => 10
