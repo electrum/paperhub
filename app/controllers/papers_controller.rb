@@ -47,6 +47,12 @@ class PapersController < ApplicationController
   end
 
   def save
+    ActiveRecord::Base.transaction do
+      do_save
+    end
+  end
+
+  def do_save
     @author_list = params[:author_list]
 
     authors = authors_from_list(@author_list)
