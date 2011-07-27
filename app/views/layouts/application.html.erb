@@ -13,7 +13,7 @@
     <span style="float:left; font-weight:bold; font-size:16px;">
       <%= link_to 'PaperHub', root_path, :style => 'text-decoration:none;' %></span>
     <% if @session_user %>
-      <%= image_tag(gravatar_url(@session_user.email, 20), :style => 'vertical-align:top;') %>
+      <%= image_tag(gravatar_url(@session_user.email, 20), :size => '20x20', :style => 'vertical-align:top;') %>
       <%= link_to @session_user.username, user_path(@session_user) %> |
       <%= link_to 'Log Out', session_path, :method => :delete %>
     <% else %>
