@@ -4,8 +4,8 @@ body, p, ol, ul, td {
   font-family: arial, sans-serif;
 }
 
-h1 { text-align: center; }
-h2 { text-align: center; font-size: 1.17em; }
+h1.paper { text-align: center; }
+h2.paper { text-align: center; font-size: 1.17em; }
 
 blockquote p { font-size: 18px; font-family: serif; }
 
