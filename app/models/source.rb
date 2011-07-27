@@ -28,7 +28,7 @@ class Source < ActiveRecord::Base
   end
 
   def upload_object
-    raise 'data must be set' unless @content
+    return unless @content
     obj = s3_object
     obj.content = @content
     obj.content_type = mimetype
