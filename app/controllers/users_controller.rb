@@ -17,6 +17,7 @@ class UsersController < ApplicationController
   end
 
   def show
-    @bookmarks = @session_user.bookmarks
+    @user = User.find_by_username!(params[:id])
+    @bookmarks = @user.bookmarks
   end
 end

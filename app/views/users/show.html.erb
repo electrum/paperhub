@@ -1,3 +1,8 @@
-<h1>Bookmarked Papers</h1>
+<h1 style="height:48px; line-height:48px; vertical-align:top;">
+  <%= image_tag(gravatar_url(@user.email, 48), :size => '48x48') %>
+  <%= @user.username %>
+</h1>
+
+<h2>Bookmarked Papers</h2>
 
 <%= render :partial => 'papers/papers', :object => @bookmarks.map(&:paper) %>
