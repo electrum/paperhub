@@ -20,4 +20,8 @@ class UsersController < ApplicationController
     @user = User.find_by_username!(params[:id])
     @bookmarks = @user.bookmarks
   end
+
+  def index
+    @users = User.order(:username)
+  end
 end

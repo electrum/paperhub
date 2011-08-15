@@ -1,0 +1,7 @@
+<h1>Users</h1>
+
+<ul style="list-style-type: none; padding-left: 5px;">
+  <% @users.each do |user| %>
+    <li><%= link_to user.username, user_path(user) %></li>
+  <% end %>
+</ul>
