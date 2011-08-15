@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>PaperHub</title>
+  <title><%= @page_title + ' - ' if @page_title %>PaperHub</title>
   <%= stylesheet_link_tag 'scaffold' %>
   <%= javascript_include_tag :defaults %>
   <%= csrf_meta_tag %>

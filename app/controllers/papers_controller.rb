@@ -5,6 +5,7 @@ class PapersController < ApplicationController
 
   def show
     @paper = Paper.find(params[:id])
+    @page_title = @paper.title
   end
 
   def new

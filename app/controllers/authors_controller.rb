@@ -1,10 +1,12 @@
 class AuthorsController < ApplicationController
   def index
     @authors = Author.includes(:papers).all
+    @page_title = 'Authors'
   end
 
   def show
     @author = Author.find(params[:id])
+    @page_title = @author.name
   end
 
   def new

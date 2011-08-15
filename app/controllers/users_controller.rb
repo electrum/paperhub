@@ -19,9 +19,11 @@ class UsersController < ApplicationController
   def show
     @user = User.find_by_username!(params[:id])
     @bookmarks = @user.bookmarks
+    @page_title = @user.username
   end
 
   def index
     @users = User.order(:username)
+    @page_title = 'Users'
   end
 end
