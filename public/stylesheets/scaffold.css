@@ -6,6 +6,7 @@ body, p, ol, ul, td {
 
 h1.paper { text-align: center; }
 h2.paper { text-align: center; font-size: 1.17em; }
+h3.paper { text-align: center; }
 
 blockquote p { font-size: 18px; font-family: serif; }
 

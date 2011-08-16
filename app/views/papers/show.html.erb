@@ -2,7 +2,7 @@
 
 <h1 class="paper"><%= @paper.title %></h1>
 <h2 class="paper"><%= @paper.authors.map {|i| link_to i.name, author_path(i) }.join(', ').html_safe %></h2>
-<h3><%= Date::MONTHNAMES[@paper.month] if @paper.month %> <%= @paper.year %></h3>
+<h3 class="paper"><%= Date::MONTHNAMES[@paper.month] if @paper.month %> <%= @paper.year %></h3>
 
 <blockquote>
   <%= simple_format @paper.abstract.squeeze("\n").gsub("\n", "\n\n") %>
