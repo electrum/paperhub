@@ -1,7 +1,7 @@
 require 'bcrypt'
 
 class User < ActiveRecord::Base
-  self.primary_key = :user_id
+  set_primary_key :user_id
 
   has_many :bookmarks
 
