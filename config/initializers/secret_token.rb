@@ -5,3 +5,7 @@
 # Make sure the secret is at least 30 characters and all random,
 # no regular words or you'll be exposed to dictionary attacks.
 Paperhub::Application.config.secret_token = 'e1df140a8dd2366857c1364a782db4f276d3383c44ee96eb3d5e7808b7b83a71eb1877b08d561079d19eafacdd040a7beefa137ffb2e3b627215e55f53bde0d3'
+if Rails.env.production?
+  raise 'SECRET TOKEN must be set' unless ENV['SECRET_TOKEN'] =~ /\A[0-9a-f]{128}\z/
+  Paperhub::Application.config.secret_token = ENV['SECRET_TOKEN']
+end
