@@ -1,7 +1,7 @@
 namespace :models do
   desc 'Check models for problems'
   task :check => :environment do
-    Dir.glob(RAILS_ROOT + '/app/models/**/*.rb').each do |f|
+    Dir.glob(Rails.root + '/app/models/**/*.rb').each do |f|
       model = eval File.basename(f)[0..-4].camelize
       next unless model.superclass == ActiveRecord::Base
       print "#{model.name}: "

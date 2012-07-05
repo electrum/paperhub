@@ -1,5 +1,5 @@
 class Paper < ActiveRecord::Base
-  set_primary_key :paper_id
+  self.primary_key = :paper_id
 
   has_many :outgoing_citations, :class_name => 'Citation', :foreign_key => :citing_paper_id
   has_many :incoming_citations, :class_name => 'Citation', :foreign_key => :cited_paper_id
