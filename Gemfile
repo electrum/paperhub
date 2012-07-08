@@ -32,8 +32,8 @@ gem 'foreigner'
 
 gem 's3'
 
-# Use unicorn as the app server
-# gem 'unicorn'
+# Use Thin as the app server
+gem 'thin'
 
 # Deploy with Capistrano
 # gem 'capistrano'
